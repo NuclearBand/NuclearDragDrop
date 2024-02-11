@@ -1,0 +1,13 @@
+{
+  "name": "com.nuclearband.dragdrop",
+  "displayName": "Nuclear DragDrop",
+  "version": "1.0.0",
+  "description": "Drag'n'drop for unity UI",
+  "keywords": ["dragndrop", "dragdrop", "unity", "nuclear"],
+  "license": "MIT",
+  "author": {
+    "name": "NuclearBand",
+    "url": "https://github.com/NuclearBand"
+  },
+  "repository": "https://github.com/NuclearBand/NuclearDragDrop.git"
+}
