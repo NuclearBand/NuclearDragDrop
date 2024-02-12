@@ -48,6 +48,9 @@ namespace Nuclear.Utilities
             
             Destroy(_draggedItem.gameObject.GetComponent<DragItem>());
             eventData.pointerDrag = _draggedItem.gameObject;
+            if (_draggedItem.GetComponent<CanvasGroup>() == null)
+                _draggedItem.gameObject.AddComponent<CanvasGroup>();
+           
             _draggedItem.BeginDrag(this, eventData.position, OnEndDrag);
             
             OnBeginDragEvent.Invoke(this, _draggedItem);
