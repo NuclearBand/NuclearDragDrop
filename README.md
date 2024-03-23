@@ -8,7 +8,7 @@ Put DragItem on item.
 
 Put DropZone on slot.
 
-Don't use DraggedItem. It's for temporary clone (but you can customize it via events)
+Don't use TemporaryDragItem. It's for temporary clone (but you can customize it via events)
 
 Dont inherit, use unity events.
 

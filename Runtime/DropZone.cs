@@ -7,23 +7,23 @@ namespace Nuclear.Utilities
 {
     public sealed class DropZone : UIBehaviour
     {
-        [field: SerializeField] public UnityEvent<DropZone, DraggedItem> OnDraggedItemEnter { get; private set; } = new();
-        [field: SerializeField] public UnityEvent<DropZone, DraggedItem> OnDraggedItemExit { get; private set; } = new();
-        [field: SerializeField] public UnityEvent<DropZone, DraggedItem> OnDraggedItemDrop { get; private set; } = new();
+        [field: SerializeField] public UnityEvent<DropZone, TemporaryDragItem> OnDraggedItemEnter { get; private set; } = new();
+        [field: SerializeField] public UnityEvent<DropZone, TemporaryDragItem> OnDraggedItemExit { get; private set; } = new();
+        [field: SerializeField] public UnityEvent<DropZone, TemporaryDragItem> OnDraggedItemDrop { get; private set; } = new();
 
-        public void Enter(DraggedItem draggedItem)
+        public void Enter(TemporaryDragItem temporaryDragItem)
         {
-            OnDraggedItemEnter.Invoke(this, draggedItem);
+            OnDraggedItemEnter.Invoke(this, temporaryDragItem);
         }
 
-        public void Exit(DraggedItem draggedItem)
+        public void Exit(TemporaryDragItem temporaryDragItem)
         {
-            OnDraggedItemExit.Invoke(this, draggedItem);
+            OnDraggedItemExit.Invoke(this, temporaryDragItem);
         }
 
-        public void Drop(DraggedItem draggedItem)
+        public void Drop(TemporaryDragItem temporaryDragItem)
         {
-            OnDraggedItemDrop.Invoke(this, draggedItem);
+            OnDraggedItemDrop.Invoke(this, temporaryDragItem);
         }
     }
 }

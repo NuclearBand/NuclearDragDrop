@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace Nuclear.Utilities
 {
-    public sealed class DraggedItem : UIBehaviour, IDragHandler, IEndDragHandler
+    public sealed class TemporaryDragItem : UIBehaviour, IDragHandler, IEndDragHandler
     {
         public DragItem DragItem { get; private set; } = null!;
         

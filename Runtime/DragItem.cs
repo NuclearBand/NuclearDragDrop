@@ -10,12 +10,12 @@ namespace Nuclear.Utilities
         IPointerDownHandler, IPointerUpHandler
     {
         public float DragTimeThreshold = 0.1f;
-        [field: SerializeField] public UnityEvent<DragItem, DraggedItem> OnBeginDragEvent { get; private set; } = new();
+        [field: SerializeField] public UnityEvent<DragItem, TemporaryDragItem> OnBeginDragEvent { get; private set; } = new();
         [field: SerializeField] public UnityEvent<DragItem, DropZone?> OnEndDragEvent { get; private set; }  = new();
 
         public RectTransform? DraggedItemParent;
 
-        private static DraggedItem? _draggedItem;
+        private static TemporaryDragItem? _draggedItem;
         private float? _pressedTime;
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -38,7 +38,7 @@ namespace Nuclear.Utilities
 
         private void CreateDraggedItem(PointerEventData eventData)
         {
-            _draggedItem = Instantiate(gameObject, DraggedItemParent, true).AddComponent<DraggedItem>();
+            _draggedItem = Instantiate(gameObject, DraggedItemParent, true).AddComponent<TemporaryDragItem>();
             
             var thisTransform = transform;
             var draggedItemTransform = _draggedItem.transform;
@@ -65,7 +65,7 @@ namespace Nuclear.Utilities
             var dropZone = eventData.pointerCurrentRaycast.gameObject;
             if (dropZone != null)
             {
-                dropZoneComponent = dropZone.GetComponent<DropZone>();
+                dropZoneComponent = dropZone.GetComponentInParent<DropZone>();
             }
 
             OnEndDragEvent.Invoke(this, dropZoneComponent);

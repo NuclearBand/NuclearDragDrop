@@ -1,7 +1,7 @@
 {
   "name": "com.nuclearband.dragdrop",
   "displayName": "Nuclear DragDrop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Drag'n'drop for unity UI",
   "keywords": ["dragndrop", "dragdrop", "unity", "nuclear"],
   "license": "MIT",
