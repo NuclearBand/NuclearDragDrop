@@ -12,12 +12,12 @@ namespace Nuclear.Utilities
         public DragItem DragItem { get; private set; } = null!;
         
         private Vector2 _dragBeginOffset;
-        private Action<PointerEventData> _onEndDrag = null!;
+        private Action<DropZone?> _onEndDrag = null!;
         private List<DropZone> _dropZones = null!;
         
         private DropZone? _currentDropZone;
 
-        public void BeginDrag(DragItem dragItem, Vector2 touchPosition, Action<PointerEventData> onEndDrag)
+        public void BeginDrag(DragItem dragItem, Vector2 touchPosition, Action<DropZone?> onEndDrag)
         {
             DragItem = dragItem;
             _onEndDrag = onEndDrag;
@@ -45,7 +45,7 @@ namespace Nuclear.Utilities
         {
             if (_currentDropZone != null)
                 _currentDropZone.Drop(this);
-            _onEndDrag(eventData);
+            _onEndDrag(_currentDropZone);
         }
 
         private DropZone? GetCurrentDropZone(PointerEventData eventData)

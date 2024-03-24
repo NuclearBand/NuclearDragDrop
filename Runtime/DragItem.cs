@@ -56,19 +56,11 @@ namespace Nuclear.Utilities
             OnBeginDragEvent.Invoke(this, _draggedItem);
         }
 
-        private void OnEndDrag(PointerEventData eventData)
+        private void OnEndDrag(DropZone? dropZone)
         {
             Destroy(_draggedItem!.gameObject);
             _draggedItem = null;
-
-            DropZone? dropZoneComponent = null;
-            var dropZone = eventData.pointerCurrentRaycast.gameObject;
-            if (dropZone != null)
-            {
-                dropZoneComponent = dropZone.GetComponentInParent<DropZone>();
-            }
-
-            OnEndDragEvent.Invoke(this, dropZoneComponent);
+            OnEndDragEvent.Invoke(this, dropZone);
         }
 
         public void OnPointerDown(PointerEventData eventData)
