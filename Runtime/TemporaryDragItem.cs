@@ -23,7 +23,9 @@ namespace Nuclear.Utilities
             _onEndDrag = onEndDrag;
             var startPosition = transform.position;
             _dragBeginOffset = touchPosition - new Vector2(startPosition.x, startPosition.y);
-            _dropZones = FindObjectsByType<DropZone>(FindObjectsSortMode.None).ToList();
+            _dropZones = FindObjectsByType<DropZone>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)
+                .Where(dz => dz.enabled)
+                .ToList();
         }
         
         public void OnDrag(PointerEventData eventData)
